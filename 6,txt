@@ -1,0 +1,54 @@
+
+процент уникальных чисел = количество уникальных чисел * 100 / общее количество чисел в массиве.
+
+</aside>*/
+        Set<Integer> set = new HashSet<>(Arrays.asList(arr));
+        double percent = set.size() * 100.0 / arr.length;
+        System.out.println(percent);
+    }
+
+    static Integer[] createArr(int size, int max, int min){
+        Integer[] arr = new Integer[size];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (int)(Math.random() * ( max - min + 1) + min);
+        }
+        return arr;
+    }
+
+    public class Cat {
+
+        private String name;
+        private String owner;
+        private String breed;
+        private int age;
+        private List<String> healthHistory;
+
+        public Cat(String name, String owner, String breed, int age){
+            this.name = name;
+            this.owner = owner;
+            this.age = age;
+            this.breed = breed;
+            healthHistory = new ArrayList<>();
+        }
+
+        @Override
+        public String toString(){
+            return "Имя : " + name + " Хозяин : " + owner + " Возраст : " + age + " Порода : " + breed;
+        }
+        @Override
+        public boolean equals(Object obj){
+            if(this == obj){
+                return true;
+            }
+            if(!(obj instanceof Cat)){
+                return false;
+            }
+            Cat cat = (Cat) obj;
+            return age == cat.age && name.equals(cat.name) && owner.equals(cat.owner) && breed.equals(cat.breed);
+        }
+
+        @Override
+        public int hashCode(){
+            return 15 * name.hashCode() + 11 * owner.hashCode() + 3 * breed.hashCode() + 23 * age;
+        }
+    }
